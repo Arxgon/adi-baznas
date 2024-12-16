@@ -1,4 +1,3 @@
-Berikut adalah README.md yang lengkap dan diperbarui dengan informasi tentang menggunakan **Laravel 11** dan **Reverb** (seperti yang Anda inginkan). README ini juga mencakup langkah-langkah untuk menyiapkan dan menjalankan proyek, menginstal dependensi, serta mengonfigurasi Reverb.
 
 ### README.md
 
@@ -89,32 +88,6 @@ npm install
 
 Reverb is a package that integrates with your Laravel project for enhanced functionality. Follow these steps to set up Reverb.
 
-#### 7.1 Install Reverb via Composer
-
-To install **Reverb**, run the following Composer command:
-
-```bash
-composer require reverb/reverb-package-name
-```
-
-#### 7.2 Configure Reverb
-
-After installation, you may need to publish the configuration file and make any necessary changes to the `.env` file:
-
-1. Publish the configuration file (if needed):
-
-```bash
-php artisan vendor:publish --provider="Reverb\ReverbServiceProvider"
-```
-
-2. Add configuration values to the `.env` file or directly in `config/reverb.php`:
-
-```env
-REVERB_API_KEY=your_api_key
-REVERB_SECRET=your_secret_key
-```
-
-For detailed configuration, refer to the official Reverb documentation.
 
 ### 8. Run the Development Server
 
@@ -171,22 +144,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```
 
 ---
-
-### Penjelasan README:
-
-1. **Prasyarat**: Menyebutkan perangkat lunak yang perlu diinstal, seperti PHP 8.1+, Composer, Node.js, dan lainnya.
-2. **Langkah-langkah Pengaturan**:
-   - **Clone repo**: Menggunakan Git untuk menyalin repositori.
-   - **Install dependensi PHP**: Menggunakan Composer untuk menginstal semua dependensi Laravel.
-   - **Konfigurasi file `.env`**: Menyalin file `.env.example` ke `.env` dan mengonfigurasi pengaturan database.
-   - **Generate kunci aplikasi**: Menggunakan perintah `php artisan key:generate` untuk mengonfigurasi kunci aplikasi Laravel.
-   - **Migrasi database**: Menggunakan `php artisan migrate` untuk membuat tabel yang diperlukan di database.
-   - **Install dependensi frontend**: Menggunakan npm atau yarn untuk menginstal dependensi frontend.
-   - **Instalasi Reverb**: Panduan untuk menginstal dan mengonfigurasi paket Reverb di Laravel.
-   - **Menjalankan server pengembangan**: Menggunakan `php artisan serve` untuk memulai server pengembangan Laravel.
-   - **Kompilasi aset frontend**: Menjalankan perintah npm untuk mengkompilasi aset frontend.
-3. **Pengujian**: Cara menjalankan pengujian dengan Laravel.
-4. **Kontribusi**: Instruksi untuk berkontribusi pada proyek.
-5. **Lisensi**: Menyebutkan jenis lisensi proyek (MIT dalam hal ini).
-
-Dokumentasi ini memastikan pengaturan proyek Laravel 11 yang lengkap, termasuk pengaturan untuk Reverb, serta langkah-langkah untuk mengonfigurasi dan menjalankan aplikasi.
