@@ -115,17 +115,9 @@ class MonthResource extends Resource
                     ->label('Pendistribusian (Rp)')
                     ->alignRight()
                     ->rules(['required'])
-                    // ->type('number')
                     ->mask(RawJs::make(<<<'JS'
                        $money($input, ',')
                     JS))
-                    // ->updateStateUsing(function ($record, $state) {
-                    //     $stateWithoutMask = str_replace('.', '', $state);
-                    //     $integerValue = is_numeric($stateWithoutMask) ? intval($stateWithoutMask) : 0;
-                    //     $record->update(['collection' => $integerValue]);
-                    //     $a = number_format($integerValue, 0, ',', '.');
-                    //     return $a;
-                    // })
                     ->getStateUsing(function ($record) {
                         return number_format($record->distribution, 0, ',', '.');
                     }),

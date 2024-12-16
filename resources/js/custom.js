@@ -33,6 +33,7 @@ function picScroll(element) {
     });
 }
 
+// Todo: simplify fetcher, it's duplicated
 async function getMonthlyData(year) {
     try {
         const response = await fetch(`/api/years/${year}/monthly-data`);
@@ -62,7 +63,6 @@ async function fetchMonthlyData(year, useCallback = false, callback = null) {
     }
 }
 
-// Todo: simplify fetcher, it's duplicated
 async function fetchAttendanceLeaders(useCallback = false, callback = null) {
     try {
         const response = await fetch("/api/attendance-leaders");
@@ -124,6 +124,35 @@ async function fetchRunningText(useCallback = false, callback = null) {
 async function fetchAds(useCallback = false, callback = null) {
     try {
         const response = await fetch("/api/ads");
+
+        if (!response.ok) {
+            throw new Error(
+                `Error: ${response.status} - ${response.statusText}`
+            );
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            if (useCallback && typeof callback === "function") {
+                callback(data.data);
+            }
+
+            return data.data;
+        } else {
+            console.error("Failed to retrieve data:", data.message);
+        }
+    } catch (error) {
+        console.error(
+            "An error occurred while fetching data:",
+            error.message
+        );
+    }
+}
+
+async function fetchVid(useCallback = false, callback = null) {
+    try {
+        const response = await fetch("/api/vid");
 
         if (!response.ok) {
             throw new Error(
@@ -615,10 +644,8 @@ async function populateAds(data, elementId) {
     data.forEach((item, index) => {
         html += `
             <div class="hs-carousel-slide">
-                <div class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900">
-                    <span
-                        class="self-center text-4xl text-gray-800 transition duration-700 dark:text-white">Test</span>
-                    <img class="size-8 rounded-full" src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Avatar">
+                <div class="flex justify-center h-full bg-gray-100">
+                    <img class="w-full h-full object-cover" src="storage/${item.path}" alt="${item.id}">
                 </div>
             </div>
         `;
@@ -672,23 +699,30 @@ async function populateAds(data, elementId) {
         </div>
     `;
 
-    $(`#${elementId}`).append(html);
+    $(`#${elementId}`).append(container);
+    // $(`#${elementId}`).append(html);
 
-    const car = new HSCarousel(document.querySelector(`#carousel`), {
-        isAutoPlay : true,
-        isInfiniteLoop : true,
-        isAutoHeight : true
+    new HSCarousel(document.querySelector(`#carousel`), {
+        isAutoPlay: true,
+        isInfiniteLoop: true,
+        isAutoHeight: true,
     });
 
-    const carousel = document.querySelector("#carousel");
+}
 
-    const { element } = HSCarousel.getInstance(carousel, true);
+async function changeVideoSource(data, videoId) {
+    var video = document.getElementById(videoId);
 
-    console.log(element);
+    var source = video.querySelector("source");
 
-    // HSCarousel.autoInit();
+    if (source) {
+        source.src = 'storage/' + data.attachment;
 
-
+        video.load();
+        video.play();
+    } else {
+        console.error("Tidak ditemukan elemen <source> dalam video.");
+    }
 }
 
 function getFormattedDate() {
@@ -747,6 +781,7 @@ window.fetchMonthlyData = fetchMonthlyData;
 window.fetchAttendanceLeaders = fetchAttendanceLeaders;
 window.fetchRunningText = fetchRunningText;
 window.fetchAds = fetchAds;
+window.fetchVid = fetchVid;
 window.populateTable = populateTable;
 window.populateChart = populateChart;
 window.populateRunningText = populateRunningText;
@@ -755,3 +790,4 @@ window.populateAds = populateAds;
 window.getFormattedDate = getFormattedDate;
 window.getCurrentTimeShort = getCurrentTimeShort;
 window.destroyAllCharts = destroyAllCharts;
+window.changeVideoSource = changeVideoSource;

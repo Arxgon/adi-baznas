@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\YearDataController;
 use App\Http\Controllers\Api\AttendanceLeaderController;
 use App\Http\Controllers\Api\RunningTextController;
 use App\Http\Controllers\Api\AdsImageController;
+use App\Http\Controllers\Api\VideoController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -17,3 +18,4 @@ Route::get('/years/{year}/monthly-data', [YearDataController::class, 'getMonthly
 route::get('/attendance-leaders', [AttendanceLeaderController::class, 'index']);
 route::get('/news', [RunningTextController::class, 'index']);
 route::get('/ads', [AdsImageController::class, 'index']);
+route::get('/vid', [VideoController::class, 'index']);

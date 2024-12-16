@@ -67,7 +67,8 @@ class AttendanceLeaderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ]);
+            ])
+            ->paginated(false);
     }
 
     public static function getPages(): array

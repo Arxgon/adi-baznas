@@ -87,9 +87,9 @@
                         </div>
 
                         <div class="grow">
-                            <div class="bg-white border h-full shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+                            <div id="carousel-container" class="bg-white border h-full shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <!-- Slider -->
-                                <div id="carousel" class="relative">
+                                {{-- <div id="carousel" class="relative">
                                     <div class="hs-carousel relative overflow-hidden w-full min-h-80 bg-white rounded-lg">
                                         <div id="ads-container"
                                             class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
@@ -131,7 +131,7 @@
                                         /
                                         <span class="hs-carousel-info-total ms-1">0</span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- End Slider -->
                             </div>
                         </div>
@@ -235,7 +235,7 @@
         </main>
 
         <button type="button"
-            class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
+            class="py-3 hidden px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
             aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-full-screen-modal"
             data-hs-overlay="#hs-full-screen-modal">
             Full screen
@@ -274,16 +274,20 @@
     </div>
 
     <script type="module">
-        const adsContainer = 'ads-container';
+        // Todo: beberapa fungsi belum ada error handle/ missing data handler
+        // Slider control
+        const adsContainer = 'carousel-container';
+        const videoId = 'fullscreen-video';
 
         const image = await fetchAds();
+        const videoData = await fetchVid();
+
         await populateAds(image, adsContainer);
+        await changeVideoSource(videoData, videoId);
 
         // modal control
-        const video = document.getElementById('fullscreen-video');
+        const video = document.getElementById(videoId);
         const modal = document.getElementById('hs-full-screen-modal');
-        // const modalControl = new HSOverlay(modal);
-        // console.log(modalControl);
 
         video.addEventListener('ended', function() {
             HSOverlay.close(modal);
@@ -294,7 +298,7 @@
             video.play();
         }
 
-        setInterval(openModal, 1000 * 30);
+        setInterval(openModal, 1000 * (60 * videoData.break));
 
         $(document).ready(async function () {
             destroyAllCharts();
