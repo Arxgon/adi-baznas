@@ -8,6 +8,9 @@ use App\Observers\YearObserver;
 use App\Models\AttendanceLeader;
 use App\Observers\AttendanceLeaderObserver;
 
+use Filament\Facades\Filament;
+use Filament\Navigation\NavigationGroup;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -25,5 +28,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Year::observe(YearObserver::class);
         AttendanceLeader::observe(AttendanceLeaderObserver::class);
+
+        Filament::serving(function () {
+            Filament::registerNavigationGroups([
+                NavigationGroup::make()
+                     ->label('Absensi'),
+                NavigationGroup::make()
+                    ->label('Kas'),
+                NavigationGroup::make()
+                    ->label('Tambahan')
+                    ->collapsed(),
+            ]);
+        });
     }
 }

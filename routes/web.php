@@ -7,8 +7,8 @@ Route::get('/', function () {
 });
 
 Route::get('/display', function () {
-    return view('display-3');
-});
+    return view('display-4');
+})->name('display');
 Route::get('/display-2', function () {
     return view('display-2');
 });

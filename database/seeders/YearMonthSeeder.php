@@ -22,17 +22,23 @@ class YearMonthSeeder extends Seeder
         // Membuat tahun (misalnya tahun saat ini)
         $year = Year::firstOrCreate(['year' => $currentYear]);
 
-        // Iterasi setiap nama bulan
+        $previousCollection = 0; // Inisialisasi nilai koleksi bulan sebelumnya
+        $previousDistribution = 0; // Inisialisasi nilai distribusi bulan sebelumnya
+
         foreach (Year::$monthNames as $index => $monthName) {
             // Jika bulan saat ini atau sebelumnya, berikan nilai acak
             if ($index <= $currentMonthIndex) {
                 $collection = rand(10000000000, 80000000000); // Nilai acak untuk collection
                 $distribution = rand(10000000000, 80000000000); // Nilai acak untuk distribution
             } else {
-                // Jika bulan mendatang, isi dengan 0
-                $collection = 0;
-                $distribution = 0;
+                // Jika bulan mendatang, pastikan nilai lebih besar dari bulan sebelumnya
+                $collection = rand($previousCollection + 1, $previousCollection + 10000000000); // Nilai acak lebih besar dari bulan sebelumnya
+                $distribution = rand($previousDistribution + 1, $previousDistribution + 10000000000); // Nilai acak lebih besar dari bulan sebelumnya
             }
+
+            // Simpan nilai collection dan distribution untuk bulan mendatang
+            $previousCollection = $collection;
+            $previousDistribution = $distribution;
 
             // Buat atau perbarui data bulan di database
             Month::updateOrCreate(
@@ -46,5 +52,6 @@ class YearMonthSeeder extends Seeder
                 ]
             );
         }
+
     }
 }

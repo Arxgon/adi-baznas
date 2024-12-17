@@ -1,4 +1,3 @@
-import { HSCarousel } from "preline";
 
 // Scroll table automatically
 function picScroll(element) {
@@ -179,6 +178,38 @@ async function fetchVid(useCallback = false, callback = null) {
     }
 }
 
+// Try to simplify fetcher
+async function fetchData(url, useCallback = false, callback = null) {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(
+                `Error: ${response.status} - ${response.statusText}`
+            );
+        }
+
+        const data = await response.json();
+
+        if (data.success) {
+            if (useCallback && typeof callback === "function") {
+                callback(data.data);
+            }
+
+            return data.data;
+        } else {
+            console.error(`Failed to retrieve data from ${url}:`, data.message);
+        }
+    } catch (error) {
+        console.error(
+            `An error occurred while fetching data from ${url}:`,
+            error.message
+        );
+    }
+}
+
+// Todo: simplify populate function
+// only use container id (automatic get child so it's easier to change theme)
 function populateTable(data, tableId) {
     $(`#${tableId} tbody`).empty();
 
@@ -194,15 +225,14 @@ function populateTable(data, tableId) {
                 [&:nth-child(2)]:*:even:bg-yellow-50
                 [&:nth-child(3)]:*:odd:bg-teal-100
                 [&:nth-child(3)]:*:even:bg-teal-50
-                dark:odd:bg-neutral-900
-                dark:even:bg-neutral-800">
-                <td class="px-6 py-2 whitespace-nowrap text-lg font-semibold text-gray-800 dark:text-neutral-200">
+                ">
+                <td class="px-6 py-2 whitespace-nowrap text-md font-semibold text-gray-800">
                     ${month}
                 </td>
-                <td class="px-6 py-2 whitespace-nowrap text-lg text-end font-bold text-yellow-900 dark:text-neutral-200">
+                <td class="px-6 py-2 whitespace-nowrap text-md text-end font-bold text-yellow-900">
                     <span class="font-normal text-sm">Rp</span>${collection.toLocaleString()}
                 </td>
-                <td class="px-6 py-2 whitespace-nowrap text-lg text-end font-bold text-teal-800 dark:text-neutral-200">
+                <td class="px-6 py-2 whitespace-nowrap text-md text-end font-bold text-teal-800">
                     <span class="font-normal text-sm">Rp</span>${distribution.toLocaleString()}
                 </td>
             </tr>
@@ -606,7 +636,7 @@ function populateAttendance(data,tableId) {
 
         const rowHtml = `
             <tr
-                class="divide-x-2 divide-green-950 font-bold text-lg bg-gradient-to-r from-slate-50 to-green-100">
+                class="divide-x-2 divide-green-950 font-bold text-normal bg-gradient-to-r from-slate-50 to-green-100">
                 <td
                     class="py-2 bg-gradient-to-r from-emerald-700 to-[#3f6228] bg-clip-text text-transparent uppercase">
                     ${item.position}
@@ -719,7 +749,7 @@ async function changeVideoSource(data, videoId) {
         source.src = 'storage/' + data.attachment;
 
         video.load();
-        video.play();
+        // video.play();
     } else {
         console.error("Tidak ditemukan elemen <source> dalam video.");
     }
@@ -791,3 +821,6 @@ window.getFormattedDate = getFormattedDate;
 window.getCurrentTimeShort = getCurrentTimeShort;
 window.destroyAllCharts = destroyAllCharts;
 window.changeVideoSource = changeVideoSource;
+
+// simplified
+window.fetchData = fetchData;
