@@ -113,7 +113,7 @@ var Da=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
         `;$(`#${e} tbody`).append(h)})}function Nc(a,e){$(`#${e}`).empty(),a.forEach((t,i)=>{const s=`
             <img src="/favicon-32x32.png" alt="divider" class="inline-block size-4 rounded-md bg-white mx-2">
             <span class="text-normal font-medium">${t.text}. </span>
-        `;$(`#${e}`).append(s)})}async function qc(a,e){$(`#${e}`).empty();let t="";a.forEach((s,r)=>{t+=`
+        `;$(`#${e}`).append(s)})}async function qc(a,e){$(`#${e}`).empty();let t="";if(a.length===0)return;a.forEach((s,r)=>{t+=`
             <div class="hs-carousel-slide">
                 <div class="flex justify-center h-full bg-gray-100">
                     <img class="w-full h-full object-cover" src="storage/${s.path}" alt="${s.id}">
@@ -165,7 +165,7 @@ var Da=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
                 <span class="hs-carousel-info-total ms-1">0</span>
             </div>
         </div>
-    `;$(`#${e}`).append(i),new HSCarousel(document.querySelector("#carousel"),{isAutoPlay:!0,isInfiniteLoop:!0,isAutoHeight:!0})}async function Bc(a,e){var t=document.getElementById(e),i=t.querySelector("source");i?(i.src="storage/"+a.attachment,t.load()):console.error("Tidak ditemukan elemen <source> dalam video.")}function _c(){const a=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],e=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],t=new Date,i=a[t.getDay()],s=t.getDate(),r=e[t.getMonth()],h=t.getFullYear();return`${i}, ${s} ${r} ${h}`}function Mc(){const a=new Date,e=String(a.getHours()).padStart(2,"0"),t=String(a.getMinutes()).padStart(2,"0");return`${e}:${t}`}window.picScroll=Tc;window.getMonthlyData=va;window.fetchMonthlyData=kc;window.fetchAttendanceLeaders=Lc;window.fetchRunningText=Ec;window.fetchAds=Ic;window.fetchVid=Ac;window.populateTable=Oc;window.populateChart=Dc;window.populateRunningText=Nc;window.populateAttendance=Rc;window.populateAds=qc;window.getFormattedDate=_c;window.getCurrentTimeShort=Mc;window.destroyAllCharts=$c;window.changeVideoSource=Bc;window.fetchData=Pc;/*
+    `;$(`#${e}`).append(i),new HSCarousel(document.querySelector("#carousel"),{isAutoPlay:!0,isInfiniteLoop:!0,isAutoHeight:!0})}async function Bc(a,e){var t=document.getElementById(e);if(a!==null){var i=t.querySelector("source");i?(i.src="storage/"+a.attachment,t.load()):console.error("Tidak ditemukan elemen <source> dalam video.")}}function _c(){const a=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],e=["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],t=new Date,i=a[t.getDay()],s=t.getDate(),r=e[t.getMonth()],h=t.getFullYear();return`${i}, ${s} ${r} ${h}`}function Mc(){const a=new Date,e=String(a.getHours()).padStart(2,"0"),t=String(a.getMinutes()).padStart(2,"0");return`${e}:${t}`}window.picScroll=Tc;window.getMonthlyData=va;window.fetchMonthlyData=kc;window.fetchAttendanceLeaders=Lc;window.fetchRunningText=Ec;window.fetchAds=Ic;window.fetchVid=Ac;window.populateTable=Oc;window.populateChart=Dc;window.populateRunningText=Nc;window.populateAttendance=Rc;window.populateAds=qc;window.getFormattedDate=_c;window.getCurrentTimeShort=Mc;window.destroyAllCharts=$c;window.changeVideoSource=Bc;window.fetchData=Pc;/*
  * @version: 2.6.0
  * @author: Preline Labs Ltd.
  * @license: Licensed under MIT and Preline UI Fair Use License (https://preline.co/docs/license.html)

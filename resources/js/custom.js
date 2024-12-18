@@ -671,15 +671,19 @@ async function populateAds(data, elementId) {
 
     let html = ``;
 
+    if (data.length === 0){
+        return;
+    }
+
     data.forEach((item, index) => {
-        html += `
+            html += `
             <div class="hs-carousel-slide">
                 <div class="flex justify-center h-full bg-gray-100">
                     <img class="w-full h-full object-cover" src="storage/${item.path}" alt="${item.id}">
                 </div>
             </div>
         `;
-    });
+        });
 
     const container = `
         <div
@@ -742,6 +746,10 @@ async function populateAds(data, elementId) {
 
 async function changeVideoSource(data, videoId) {
     var video = document.getElementById(videoId);
+
+    if(data === null){
+        return;
+    }
 
     var source = video.querySelector("source");
 

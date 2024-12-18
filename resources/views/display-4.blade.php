@@ -305,7 +305,9 @@
 
         }
 
-        setInterval(openModal, 1000 * (60 * videoData.break));
+        if(videoData !== null){
+            setInterval(openModal, 1000 * (60 * videoData.break));
+        }
 
         $(document).ready(async function () {
             destroyAllCharts();
