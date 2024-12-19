@@ -1,11 +1,40 @@
 {
+  "public/js/apexcharts/dist/apexcharts.css": {
+    "file": "assets/apexcharts-DEG6FZZR.css",
+    "src": "public/js/apexcharts/dist/apexcharts.css",
+    "isEntry": true
+  },
+  "public/js/apexcharts/dist/apexcharts.min.js": {
+    "file": "assets/apexcharts.min-Cl-vmx8S.js",
+    "name": "apexcharts.min",
+    "src": "public/js/apexcharts/dist/apexcharts.min.js",
+    "isEntry": true
+  },
+  "public/js/jquery/dist/jquery.min.js": {
+    "file": "assets/jquery.min-B5ZEcMqV.js",
+    "name": "jquery.min",
+    "src": "public/js/jquery/dist/jquery.min.js",
+    "isEntry": true
+  },
+  "public/js/lodash/lodash.min.js": {
+    "file": "assets/lodash.min-BrRE-na4.js",
+    "name": "lodash.min",
+    "src": "public/js/lodash/lodash.min.js",
+    "isEntry": true
+  },
+  "public/js/preline/dist/helper-apexcharts.js": {
+    "file": "assets/helper-apexcharts-CkZN9GXq.js",
+    "name": "helper-apexcharts",
+    "src": "public/js/preline/dist/helper-apexcharts.js",
+    "isEntry": true
+  },
   "resources/css/app.css": {
     "file": "assets/app-DsjQnIwe.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-Cvz703Ol.js",
+    "file": "assets/app--LjqZ1Z0.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

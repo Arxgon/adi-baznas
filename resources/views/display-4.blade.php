@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('node_modules/jquery/dist/jquery.min.js')
+    @vite('public/js/jquery/dist/jquery.min.js')
+    @vite('public/js/apexcharts/dist/apexcharts.css')
+    @vite('public/js/lodash/lodash.min.js')
+    @vite('public/js/apexcharts/dist/apexcharts.min.js')
+    @vite('public/js/preline/dist/helper-apexcharts.js')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @vite('node_modules/apexcharts/dist/apexcharts.css')
-    @vite('node_modules/lodash/lodash.min.js')
-    @vite('node_modules/apexcharts/dist/apexcharts.min.js')
-    @vite('node_modules/preline/dist/helper-apexcharts.js')
 </head>
 
 <body class="overflow-hidden"
