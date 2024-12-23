@@ -35,6 +35,7 @@ class AdsImageResource extends Resource
                     ->columnSpanFull(),
                 FileUpload::make('path')->image()->directory('ads')
                     ->label('Unggah Gambar')
+                    ->acceptedFileTypes(['image/jpeg', 'image/png'])
                     ->imageEditor()
                     ->columnSpanFull(),
             ]);
