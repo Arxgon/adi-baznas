@@ -1,7 +1,7 @@
 
 ### README.md
 
-```markdown
+
 # Laravel 11 Project with Reverb Setup
 
 This project is a Laravel 11-based web application that requires **Reverb** for certain functionality. Follow the steps below to set up the project after cloning it from GitHub.
@@ -28,33 +28,7 @@ git clone https://github.com/yourusername/your-laravel-project.git
 cd your-laravel-project
 ```
 
-### 2. Install PHP Dependencies
-
-Install the PHP dependencies using Composer:
-
-```bash
-composer install
-```
-
-Laravel 11 comes with an updated set of dependencies, so Composer will take care of installing the necessary packages.
-
-### 3. Set Up Environment File
-
-Copy the `.env.example` file to create your own `.env` file. This file contains the environment-specific configuration for your Laravel application:
-
-```bash
-cp .env.example .env
-```
-
-### 4. Generate Application Key
-
-Run the following command to generate a new application key, which will be used for encryption and session management:
-
-```bash
-php artisan key:generate
-```
-
-### 5. Set Up the Database
+### 2. Set Up the Database
 
 - Create a new database in your MySQL server (e.g., `your_project_db`).
 - Configure your database settings in the `.env` file:
@@ -67,29 +41,24 @@ DB_DATABASE=your_project_db
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+### 3. Install PHP Dependencies
 
-- Run the migrations to create the necessary tables in your database:
-
-```bash
-php artisan migrate
-```
-
-### 6. Install Node.js Dependencies (for Frontend Assets)
-
-If your project uses frontend assets managed by npm or yarn, install the required dependencies:
+Install the PHP dependencies using Composer:
 
 ```bash
-npm install
-# or if you use yarn:
-# yarn install
+composer update
 ```
 
-### 7. Set Up Reverb
+Laravel 11 comes with an updated set of dependencies, so Composer will take care of installing the necessary packages.
+
+### 4. Set Up Reverb
 
 Reverb is a package that integrates with your Laravel project for enhanced functionality. Follow these steps to set up Reverb.
 
+https://laravel.com/docs/11.x/reverb
 
-### 8. Run the Development Server
+
+### 5. Run the Development Server
 
 You can now serve the application locally using the Laravel development server:
 
@@ -99,7 +68,7 @@ php artisan serve
 
 Visit `http://127.0.0.1:8000` in your browser to see the application running.
 
-### 9. Compile Frontend Assets
+### 6. Compile Frontend Assets
 
 If your project includes frontend assets (JavaScript, CSS), compile them using:
 
@@ -109,9 +78,13 @@ npm run dev  # For development build
 npm run prod # For production build
 ```
 
-### 10. Additional Configuration
+### 7. Additional Configuration
 
 If your project requires any additional setup (e.g., configuring queues, caches, etc.), make sure to follow the relevant documentation for those services.
+
+### Deployment
+
+will follow soon
 
 ## Testing
 
