@@ -342,12 +342,11 @@
 
                     await populateTable(data, tableId);
                     destroyAllCharts();
-                    await populateChart(chartElementId, data.collections, data.distributions);
+                    await populateChart(chartElementId, data.accumulatedCollections, data.accumulatedDistributions);
                     await populateAttendance(attendanceData, attendanceTableId);
                     await populateRunningText(news, runningTextContainer);
                     populateDate();
                     populateTime();
-
 
                     console.log('data refreshed in: ' + getCurrentTimeShort());
 
