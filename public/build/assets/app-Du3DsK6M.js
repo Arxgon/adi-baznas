@@ -32,19 +32,19 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
                     <span class="font-normal text-sm">Rp</span>${n.toLocaleString()}
                 </td>
             </tr>
-        `;$(`#${e} tbody`).append(r)})}async function Lp(a,e,t){document.getElementById(a).innerHTML=`
+        `;$(`#${e} tbody`).append(r)})}async function Lp(a,e,t){const i=new Date().getFullYear();document.getElementById(a).innerHTML=`
     <div class="w-1/2 flex flex-col gap-1">
         <div class="p-3 flex flex-col bg-white border shadow-sm rounded-xl">
             <div class="flex justify-center items-center">
                 <div>
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-neutral-500">
+                    <h2 class="text-lg font-bold text-gray-900 ">
                         Penghimpunan
                     </h2>
                 </div>
             </div>
             <p
-                class="inline-flex justify-center items-center py-1.5 px-3 rounded-md text-2xl font-bold bg-yellow-100 text-yellow-800 dark:bg-teal-800/30 dark:text-teal-500">
-                <span class="font-medium text-lg">Rp</span>${e.reduce((o,l)=>o+l,0).toLocaleString()}
+                class="inline-flex justify-center items-center py-1.5 px-3 rounded-md text-2xl font-bold bg-yellow-100 text-yellow-800 ">
+                <span class="font-medium text-lg">Rp</span>${e.reduce((l,c)=>l+c,0).toLocaleString()}
             </p>
         </div>
 
@@ -52,8 +52,8 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
             <!-- Header -->
             <div class="flex justify-center items-center">
                 <div>
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-neutral-500">
-                        Penghimpunan 2024
+                    <h2 class="text-lg font-bold text-gray-900 ">
+                        Penghimpunan ${i}
                     </h2>
                 </div>
 
@@ -67,23 +67,23 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
         <div class="p-3 flex flex-col bg-white border shadow-sm rounded-xl">
             <div class="flex justify-center items-center">
                 <div>
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-neutral-500">
+                    <h2 class="text-lg font-bold text-gray-900 ">
                         Pendistribusian
                     </h2>
                 </div>
             </div>
             <p
-                class="inline-flex justify-center items-center py-1.5 px-3 rounded-md text-2xl font-bold bg-teal-100 text-teal-800 dark:bg-teal-800/30 dark:text-teal-500">
-                <span class="font-medium text-lg">Rp</span>${t.reduce((o,l)=>o+l,0).toLocaleString()}
+                class="inline-flex justify-center items-center py-1.5 px-3 rounded-md text-2xl font-bold bg-teal-100 text-teal-800 ">
+                <span class="font-medium text-lg">Rp</span>${t.reduce((l,c)=>l+c,0).toLocaleString()}
             </p>
         </div>
 
-        <div class="p-3 flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+        <div class="p-3 flex flex-col bg-white border shadow-sm rounded-xl">
             <!-- Header -->
             <div class="flex justify-center items-center">
                 <div>
-                    <h2 class="text-lg font-bold text-gray-900 dark:text-neutral-500">
-                        Pendistribusian 2024
+                    <h2 class="text-lg font-bold text-gray-900 ">
+                        Pendistribusian ${i}
                     </h2>
                 </div>
             </div>
@@ -92,7 +92,7 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
             <div id="chart-distribution"></div>
         </div>
     </div>
-    `;const i={chart:{type:"line",height:250,dropShadow:{enabled:!0,color:"#000",top:18,left:7,blur:10,opacity:.2},zoom:{enabled:!1},toolbar:{show:!1}},series:[{name:"Penghimpunan",data:e}],colors:["#845020","#545454"],dataLabels:{enabled:!0,style:{fontSize:"14px",fontFamily:"Helvetica, Arial, sans-serif",fontWeight:"bold",colors:["#845020"]},background:{enabled:!0,foreColor:"#fff",padding:4,borderRadius:2,borderWidth:1,borderColor:"#fff",opacity:.9,dropShadow:{enabled:!1,top:1,left:1,blur:1,color:"#000",opacity:.45}},formatter:o=>o>=1e9?`${(o/1e9).toFixed(0)} M`:o>=1e6?`${(o/1e6).toFixed(0)} Jt`:o>=1e3?`${(o/1e3).toFixed(0)} K`:o},stroke:{curve:"smooth"},grid:{borderColor:"#e7e7e7",row:{colors:["#f3f3f3","transparent"],opacity:.5}},markers:{size:1},xaxis:{categories:["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],axisBorder:{show:!1},axisTicks:{show:!1},crosshairs:{show:!1},labels:{style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},offsetX:-2}},yaxis:{labels:{align:"left",minWidth:0,maxWidth:140,style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},formatter:o=>o>=1e9?`${(o/1e9).toFixed(0)} M`:o>=1e6?`${(o/1e6).toFixed(0)} Jt`:o>=1e3?`${(o/1e3).toFixed(0)} K`:o}},legend:{position:"top",horizontalAlign:"right",floating:!0,offsetY:-25,offsetX:-5}},s={chart:{type:"line",height:250,dropShadow:{enabled:!0,color:"#000",top:18,left:7,blur:10,opacity:.2},zoom:{enabled:!1},toolbar:{show:!1}},series:[{name:"Pendistribusian",data:t}],colors:["#845020","#545454"],dataLabels:{enabled:!0,style:{fontSize:"14px",fontFamily:"Helvetica, Arial, sans-serif",fontWeight:"bold",colors:["#845020"]},background:{enabled:!0,foreColor:"#fff",padding:4,borderRadius:2,borderWidth:1,borderColor:"#fff",opacity:.9,dropShadow:{enabled:!1,top:1,left:1,blur:1,color:"#000",opacity:.45}},formatter:o=>o>=1e9?`${(o/1e9).toFixed(0)} M`:o>=1e6?`${(o/1e6).toFixed(0)} Jt`:o>=1e3?`${(o/1e3).toFixed(0)} K`:o},stroke:{curve:"smooth"},grid:{borderColor:"#e7e7e7",row:{colors:["#f3f3f3","transparent"],opacity:.5}},markers:{size:1},xaxis:{categories:["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],axisBorder:{show:!1},axisTicks:{show:!1},crosshairs:{show:!1},labels:{style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},offsetX:-2}},yaxis:{labels:{align:"left",minWidth:0,maxWidth:140,style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},formatter:o=>o>=1e9?`${(o/1e9).toFixed(0)} M`:o>=1e6?`${(o/1e6).toFixed(0)} Jt`:o>=1e3?`${(o/1e3).toFixed(0)} K`:o}},legend:{position:"top",horizontalAlign:"right",floating:!0,offsetY:-25,offsetX:-5}};new ApexCharts(document.querySelector("#chart-collection"),i).render(),new ApexCharts(document.querySelector("#chart-distribution"),s).render()}function Tp(){document.querySelectorAll(".apexcharts-canvas").forEach(e=>{const t=ApexCharts.getChartByID(e.id);t!==void 0&&(console.log(t+"destroyed"),t.destroy())})}function Ep(a,e){$(`#${e} tbody`).empty();const t={ada:"from-green-500 to-green-700","tidak ada":"from-red-500 to-red-800","dinas luar":"from-blue-500 to-blue-800"};a.forEach((i,s)=>{const n=t[i.attendance_status]||"from-gray-500 to-gray-700",r=`
+    `;const s={chart:{type:"line",height:250,dropShadow:{enabled:!0,color:"#000",top:18,left:7,blur:10,opacity:.2},zoom:{enabled:!1},toolbar:{show:!1}},series:[{name:"Penghimpunan",data:e}],colors:["#845020","#545454"],dataLabels:{enabled:!0,style:{fontSize:"14px",fontFamily:"Helvetica, Arial, sans-serif",fontWeight:"bold",colors:["#845020"]},background:{enabled:!0,foreColor:"#fff",padding:4,borderRadius:2,borderWidth:1,borderColor:"#fff",opacity:.9,dropShadow:{enabled:!1,top:1,left:1,blur:1,color:"#000",opacity:.45}},formatter:l=>l>=1e9?`${(l/1e9).toFixed(0)} M`:l>=1e6?`${(l/1e6).toFixed(0)} Jt`:l>=1e3?`${(l/1e3).toFixed(0)} K`:l},stroke:{curve:"smooth"},grid:{borderColor:"#e7e7e7",row:{colors:["#f3f3f3","transparent"],opacity:.5}},markers:{size:1},xaxis:{categories:["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],axisBorder:{show:!1},axisTicks:{show:!1},crosshairs:{show:!1},labels:{style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},offsetX:-2}},yaxis:{labels:{align:"left",minWidth:0,maxWidth:140,style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},formatter:l=>l>=1e9?`${(l/1e9).toFixed(0)} M`:l>=1e6?`${(l/1e6).toFixed(0)} Jt`:l>=1e3?`${(l/1e3).toFixed(0)} K`:l}},legend:{position:"top",horizontalAlign:"right",floating:!0,offsetY:-25,offsetX:-5}},n={chart:{type:"line",height:250,dropShadow:{enabled:!0,color:"#000",top:18,left:7,blur:10,opacity:.2},zoom:{enabled:!1},toolbar:{show:!1}},series:[{name:"Pendistribusian",data:t}],colors:["#845020","#545454"],dataLabels:{enabled:!0,style:{fontSize:"14px",fontFamily:"Helvetica, Arial, sans-serif",fontWeight:"bold",colors:["#845020"]},background:{enabled:!0,foreColor:"#fff",padding:4,borderRadius:2,borderWidth:1,borderColor:"#fff",opacity:.9,dropShadow:{enabled:!1,top:1,left:1,blur:1,color:"#000",opacity:.45}},formatter:l=>l>=1e9?`${(l/1e9).toFixed(0)} M`:l>=1e6?`${(l/1e6).toFixed(0)} Jt`:l>=1e3?`${(l/1e3).toFixed(0)} K`:l},stroke:{curve:"smooth"},grid:{borderColor:"#e7e7e7",row:{colors:["#f3f3f3","transparent"],opacity:.5}},markers:{size:1},xaxis:{categories:["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"],axisBorder:{show:!1},axisTicks:{show:!1},crosshairs:{show:!1},labels:{style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},offsetX:-2}},yaxis:{labels:{align:"left",minWidth:0,maxWidth:140,style:{colors:"#9ca3af",fontSize:"13px",fontFamily:"Inter, ui-sans-serif",fontWeight:400},formatter:l=>l>=1e9?`${(l/1e9).toFixed(0)} M`:l>=1e6?`${(l/1e6).toFixed(0)} Jt`:l>=1e3?`${(l/1e3).toFixed(0)} K`:l}},legend:{position:"top",horizontalAlign:"right",floating:!0,offsetY:-25,offsetX:-5}};new ApexCharts(document.querySelector("#chart-collection"),s).render(),new ApexCharts(document.querySelector("#chart-distribution"),n).render()}function Tp(){document.querySelectorAll(".apexcharts-canvas").forEach(e=>{const t=ApexCharts.getChartByID(e.id);t!==void 0&&(console.log(t+"destroyed"),t.destroy())})}function Ep(a,e){$(`#${e} tbody`).empty();const t={ada:"from-green-500 to-green-700","tidak ada":"from-red-500 to-red-800","dinas luar":"from-blue-500 to-blue-800"};a.forEach((i,s)=>{const n=t[i.attendance_status]||"from-gray-500 to-gray-700",r=`
             <tr
                 class="divide-x-2 divide-green-950 font-bold text-normal bg-gradient-to-r from-slate-50 to-green-100">
                 <td
@@ -116,7 +116,7 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
             data-hs-carousel='{
                 "loadingClasses": "opacity-0",
                 "isAutoHeight": true,
-                "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
+                "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer",
                 "isAutoPlay": true
             }'
         class="relative">
@@ -127,7 +127,7 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
             </div>
 
             <button type="button"
-                class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg">
                 <span class="text-2xl" aria-hidden="true">
                     <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -138,7 +138,7 @@ var Ld=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"
                 <span class="sr-only">Previous</span>
             </button>
             <button type="button"
-                class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10">
+                class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg">
                 <span class="sr-only">Next</span>
                 <span class="text-2xl" aria-hidden="true">
                     <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
